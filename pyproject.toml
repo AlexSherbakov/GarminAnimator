@@ -1,0 +1,77 @@
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "garmin-animator"
+version = "0.1.0"
+description = "Create beautiful animated videos from Garmin GPX/FIT activities."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Alex Sherbakov" }
+]
+
+keywords = [
+    "garmin",
+    "gpx",
+    "fit",
+    "gps",
+    "animation",
+    "map",
+    "running",
+    "cycling"
+]
+
+dependencies = [
+    "gpxpy>=1.6.2",
+    "fitdecode>=0.10.0",
+    "numpy>=2.0",
+    "Pillow>=11.0",
+    "opencv-python>=4.10",
+    "requests>=2.32",
+    "mercantile>=1.2",
+    "pyproj>=3.6",
+    "xyzservices>=2025.1"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+    "black>=24.0",
+    "mypy>=1.10"
+]
+
+[project.scripts]
+garmin-animator = "garmin_animator.__main__:main"
+
+[tool.black]
+line-length = 88
+target-version = ["py310"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "UP",
+    "B"
+]
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests"
+]
+
+[tool.mypy]
+python_version = "3.10"
+warn_unused_configs = true
+warn_return_any = true
+check_untyped_defs = true
